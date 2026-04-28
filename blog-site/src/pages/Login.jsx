@@ -10,6 +10,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const res = await API.post("/users/login", { email, password });
+      console.log(res)
       login(res.data); // save user in context + localStorage
       window.location.href = "/dashboard";
     } catch (err) {

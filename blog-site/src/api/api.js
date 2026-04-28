@@ -2,7 +2,11 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api"
+  baseURL:
+  process.env.NODE_ENV === "production"
+  ? "https://blogprojectbe.onrender.com/api"
+  : "http://localhost:5000/api",
+  withCredentials: true,
 });
 
 API.interceptors.request.use((req) => {
