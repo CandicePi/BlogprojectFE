@@ -10,13 +10,17 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const res = await API.post("/users/login", { email, password });
-      console.log(res)
+      console.log
       login(res.data); // save user in context + localStorage
       window.location.href = "/dashboard";
     } catch (err) {
       console.error(err);
       alert("Login failed");
     }
+  };
+
+    const handleRegister = () => {
+   window.location.href = "/register";
   };
 
   return (
@@ -34,6 +38,7 @@ const Login = () => {
         onChange={e => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
+      <button onClick={handleRegister}>Register</button>
     </div>
   );
 };
